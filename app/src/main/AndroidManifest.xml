@@ -70,6 +70,7 @@
         <activity android:name=".AlterarDadosProfissionaisActivity" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".MoreInfoActivity" />
+        <activity android:name=".MoreInfo2Activity" />
         <activity android:name=".ListJobActivity" />
         <activity android:name=".ListJobToChangeActivity" />
         <activity android:name=".EmpregadorMenuActivity" />
