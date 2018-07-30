@@ -26,7 +26,7 @@ public class ApiClient {
                     .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                     .create();
             Retrofit restAdapter = new Retrofit.Builder()
-                    .baseUrl("http://jonatas.pythonanywhere.com/")
+                    .baseUrl("https://jobseekerws.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
 

@@ -8,7 +8,12 @@
         />
 
     <solid
-        android:color="#ccc"
+        android:color="#fff"
+        />
+
+    <stroke
+        android:color="@color/colorPrimary"
+        android:width="2dp"
         />
 
 
