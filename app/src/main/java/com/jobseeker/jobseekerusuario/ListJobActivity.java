@@ -48,7 +48,7 @@ public class ListJobActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new EmpregadorAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(ListJobActivity.this, MoreInfoActivity.class);
+                Intent intent = new Intent(ListJobActivity.this, MoreInfo2Activity.class);
                 intent.putExtra("job", mEmpregadorList.get(position));
                 startActivity(intent);
             }
@@ -72,7 +72,7 @@ public class ListJobActivity extends AppCompatActivity {
         mAdapter2.setOnItemClickListener(new EmpregadorAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(ListJobActivity.this, MoreInfoActivity.class);
+                Intent intent = new Intent(ListJobActivity.this, MoreInfo2Activity.class);
                 intent.putExtra("job", mEmpregadorList.get(position));
                 startActivity(intent);
             }

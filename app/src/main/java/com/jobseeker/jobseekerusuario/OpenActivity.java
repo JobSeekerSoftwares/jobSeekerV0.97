@@ -137,6 +137,8 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
+                signInButton.setVisibility(View.VISIBLE);
+                loginProgress.setVisibility(View.GONE);
                 Snackbar.make(getWindow().getDecorView(), "Login failed", Snackbar.LENGTH_LONG).show();
             }
         }
@@ -152,6 +154,8 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
+                            signInButton.setVisibility(View.VISIBLE);
+                            loginProgress.setVisibility(View.GONE);
                             Snackbar.make(getWindow().getDecorView(), "Authentication failed.", Snackbar.LENGTH_LONG).show();
                         } else {
                             ref= FirebaseDatabase.getInstance().getReference(USERS_CHILD);
@@ -180,6 +184,8 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
+                                    signInButton.setVisibility(View.VISIBLE);
+                                    loginProgress.setVisibility(View.GONE);
                                 }
                             });
 
@@ -206,12 +212,16 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
                     }
                 } else {
                     System.out.println(response.errorBody());
+                    signInButton.setVisibility(View.VISIBLE);
+                    loginProgress.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext() , "Problemas com o banco de dados, tente novamente mais tarde", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<List<Trabalhador>> call, Throwable t) {
                 t.printStackTrace();
+                signInButton.setVisibility(View.VISIBLE);
+                loginProgress.setVisibility(View.GONE);
             }
         });
     }
@@ -220,6 +230,8 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
+        signInButton.setVisibility(View.VISIBLE);
+        loginProgress.setVisibility(View.GONE);
         Snackbar.make(getWindow().getDecorView(), "Google Play Services error.", Snackbar.LENGTH_LONG).show();
     }
 

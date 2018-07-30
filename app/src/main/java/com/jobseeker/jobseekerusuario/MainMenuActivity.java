@@ -12,13 +12,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.app.sample.fchat.ActivityMain;
 import com.app.sample.fchat.ChatActivity;
+import com.app.sample.fchat.data.SettingsAPI;
 import com.app.sample.fchat.data.Tools;
+import com.app.sample.fchat.widget.CircleTransform;
 import com.jobseeker.jobseekerusuario.Model.Empregador;
 import com.jobseeker.jobseekerusuario.Model.Trabalhador;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +34,21 @@ import retrofit2.Response;
 public class MainMenuActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Trabalhador usuario;
+    public ImageView image;
+    SettingsAPI set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        set = new SettingsAPI(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         prepareActionBar(toolbar);
         usuario = getIntent().getParcelableExtra("usuario");
+        ImageView img =  (ImageView) findViewById(R.id.image5);
+
+        Picasso.with(getBaseContext()).load(set.readSetting("mydp")).resize(150, 150).transform(new CircleTransform()).into(img);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Tools.systemBarLolipop(this);
         }

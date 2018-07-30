@@ -98,8 +98,6 @@ public class ChatsFragment2 extends Fragment {
                 mAdapter.setOnInfoClickListener(new ChatsListAdapter.OnInfoClickListener2() {
                     @Override
                     public void onInfo2Click(View view, ChatMessage obj, int position) {
-
-                        Log.v("seekerDebug","Entrou no click info");
                         if (obj.getReceiver().getId().equals(set.readSetting("myid")))
                             getInfoFriend(obj.getSender().getId());
                         else if (obj.getSender().getId().equals(set.readSetting("myid")))
@@ -133,18 +131,23 @@ public class ChatsFragment2 extends Fragment {
         ApiClient.getJobClient().getPessoaByGmail(id).enqueue(new Callback<List<Trabalhador>>() {
             public void onResponse(Call<List<Trabalhador>> call, Response<List<Trabalhador>> response ){
                 if (response.isSuccessful() ) {
+                    Log.v("seekerDebug","Entrou no getInfoFriend");
                     List<Trabalhador> jobs = response.body();
                     if(jobs.size() != 0){
+                        Log.v("seekerDebug","Entrou no if");
                         Intent intent = new Intent(getContext(), FriendInfoActivity.class);
                         intent.putExtra("friendInfo", jobs.get(0));
                         startActivity( intent);
                     }
+                    Log.v("seekerDebug","Passou o if do getInfoFriend");
                 } else {
                     System.out.println(response.errorBody());
+                    Log.v("seekerDebug","Erro no click info");
                 }
             }
             @Override
             public void onFailure(Call<List<Trabalhador>> call, Throwable t) {
+                Log.v("seekerDebug","Grande erro no click info");
                 t.printStackTrace();
             }
         });
