@@ -54,5 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crash:10.0.0'
     implementation 'com.google.firebase:firebase-analytics:10.0.0'
     implementation 'com.google.firebase:firebase-core:10.0.0'
+
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

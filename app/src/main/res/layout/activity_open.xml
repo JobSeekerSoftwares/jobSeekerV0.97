@@ -6,7 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
 
+
+
     tools:context=".OpenActivity">
+
+    <ImageView
+        android:background="@drawable/aperto"
+        android:layout_width="wrap_content"
+        android:elevation= "-5dp"
+        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:alpha = "0.5"
+        />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -54,13 +67,25 @@
         android:layout_marginTop="202dp"
         app:srcCompat="@drawable/pasta" />
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp" />
+        android:layout_marginBottom="194dp"
+        android:text="Sign in trabalhador"
+        app:isDarkTheme="true" />
+
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
+        android:id="@+id/sign_in_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="124dp"
+        android:text="Sign in empregador"
+        app:isDarkTheme="true" />
 
     <ProgressBar
         android:id="@+id/login_progress"

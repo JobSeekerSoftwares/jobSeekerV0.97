@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="160dp">
+        tools:layout_editor_absoluteY="486dp">
 
         <ImageView
             android:id="@+id/image55"
@@ -39,25 +39,12 @@
             tools:layout_editor_absoluteY="36dp" />
 
         <Button
-            android:id="@+id/button55"
-            android:layout_width="156dp"
+            android:id="@+id/button4"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/buttonshape2"
-            android:onClick="changeToTrabalhador"
-            android:text="Trabalhador"
-            android:textAppearance="@style/TextAppearance.AppCompat" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/button55"
-            android:layout_marginEnd="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
             android:background="@drawable/buttonshape3"
             android:onClick="goChat"
             android:text="@string/chat"

@@ -35,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jobseeker.jobseekerusuario.Model.Empregador;
 import com.jobseeker.jobseekerusuario.Model.Trabalhador;
+import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,8 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
         View.OnClickListener {
 
     private static final int RC_SIGN_IN = 100;
-    private SignInButton signInButton;
+    private GoogleSignInButton signInButton;
+    private GoogleSignInButton signInButton2;
     private ProgressBar loginProgress;
 
     private GoogleApiClient mGoogleApiClient;
@@ -55,17 +57,19 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
     DatabaseReference ref;
     SettingsAPI set;
     public static final String USERS_CHILD = "users";
-
+    public boolean trab = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open);
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton = (GoogleSignInButton) findViewById(R.id.sign_in_button);
+        signInButton2 = (GoogleSignInButton) findViewById(R.id.sign_in_button2);
         loginProgress = (ProgressBar) findViewById(R.id.login_progress);
 
         // Set click listeners
         signInButton.setOnClickListener(this);
+        signInButton2.setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -99,6 +103,7 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
                 mFirebaseAuth.signOut();
                 Auth.GoogleSignInApi.signOut(mGoogleApiClient);
                 set.deleteAllSettings();
+                trab = false;
             }
 
             @Override
@@ -112,6 +117,10 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
+                trab = true;
+                signIn();
+                break;
+            case R.id.sign_in_button2:
                 signIn();
                 break;
             default:
@@ -124,6 +133,7 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,12 +142,14 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 signInButton.setVisibility(View.GONE);
+                signInButton2.setVisibility(View.GONE);
                 loginProgress.setVisibility(View.VISIBLE);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
                 signInButton.setVisibility(View.VISIBLE);
+                signInButton2.setVisibility(View.VISIBLE);
                 loginProgress.setVisibility(View.GONE);
                 Snackbar.make(getWindow().getDecorView(), "Login failed", Snackbar.LENGTH_LONG).show();
             }
@@ -185,6 +197,7 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
                                     signInButton.setVisibility(View.VISIBLE);
+                                    signInButton2.setVisibility(View.VISIBLE);
                                     loginProgress.setVisibility(View.GONE);
                                 }
                             });
@@ -201,18 +214,38 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
 
                     List<Trabalhador> jobs = response.body();
                     if(jobs.size() != 0){
-                        Intent intent = new Intent(OpenActivity.this, MainMenuActivity.class);
-                        intent.putExtra("usuario", jobs.get(0));
-                        startActivity( intent);
-                        finish();
+                        if(trab){
+                            Intent intent = new Intent(OpenActivity.this, MainMenuActivity.class);
+                            intent.putExtra("usuario", jobs.get(0));
+                            startActivity( intent);
+                            finish();
+                        }else{
+                            Intent intent = new Intent(OpenActivity.this, EmpregadorMenuActivity.class);
+                            intent.putExtra("usuario", jobs.get(0));
+                            startActivity( intent);
+                            finish();
+                        }
+
                     }else{
-                        Intent intent = new Intent(OpenActivity.this, DadosPessoaisActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(trab){
+                            Intent intent = new Intent(OpenActivity.this, DadosPessoaisActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Intent intent = new Intent(OpenActivity.this, EmpregadorMenuActivity.class);
+                            Trabalhador usr = new Trabalhador(set.readSetting("myname"), "","", set.readSetting("myMl"),
+                                    "", "", "", "","",
+                                    "", "", "", set.readSetting("myid"), "",
+                                    "", "", "", "", "", "");
+                            intent.putExtra("usuario", usr);
+                            startActivity( intent);
+                            finish();
+                        }
                     }
                 } else {
                     System.out.println(response.errorBody());
                     signInButton.setVisibility(View.VISIBLE);
+                    signInButton2.setVisibility(View.VISIBLE);
                     loginProgress.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext() , "Problemas com o banco de dados, tente novamente mais tarde", Toast.LENGTH_SHORT).show();
                 }
@@ -221,6 +254,7 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
             public void onFailure(Call<List<Trabalhador>> call, Throwable t) {
                 t.printStackTrace();
                 signInButton.setVisibility(View.VISIBLE);
+                signInButton2.setVisibility(View.VISIBLE);
                 loginProgress.setVisibility(View.GONE);
             }
         });
@@ -231,6 +265,7 @@ public class OpenActivity extends AppCompatActivity implements GoogleApiClient.O
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         signInButton.setVisibility(View.VISIBLE);
+        signInButton2.setVisibility(View.VISIBLE);
         loginProgress.setVisibility(View.GONE);
         Snackbar.make(getWindow().getDecorView(), "Google Play Services error.", Snackbar.LENGTH_LONG).show();
     }

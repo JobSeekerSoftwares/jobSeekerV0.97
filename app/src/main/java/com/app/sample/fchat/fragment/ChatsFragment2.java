@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jobseeker.jobseekerusuario.ApiClient;
+import com.jobseeker.jobseekerusuario.FriendInfo2Activity;
 import com.jobseeker.jobseekerusuario.FriendInfoActivity;
 import com.jobseeker.jobseekerusuario.Model.Trabalhador;
 import com.jobseeker.jobseekerusuario.R;
@@ -135,7 +136,7 @@ public class ChatsFragment2 extends Fragment {
                     List<Trabalhador> jobs = response.body();
                     if(jobs.size() != 0){
                         Log.v("seekerDebug","Entrou no if");
-                        Intent intent = new Intent(getContext(), FriendInfoActivity.class);
+                        Intent intent = new Intent(getContext(), FriendInfo2Activity.class);
                         intent.putExtra("friendInfo", jobs.get(0));
                         startActivity( intent);
                     }

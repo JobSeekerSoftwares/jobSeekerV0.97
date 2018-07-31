@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/imageView"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:rotation="180"
+            android:onClick="irInicio"
+            app:srcCompat="@drawable/voltar" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorWhite">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/textView201"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="24dp"
+                android:text="Nome"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <EditText
+                android:id="@+id/editText21"
+                android:layout_width="338dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/textView201"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/textshape"
+                android:clickable="false"
+                android:cursorVisible="false"
+
+                android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <TextView
+                android:id="@+id/textView202"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText21"
+                android:layout_marginStart="24dp"
+                android:text="Email" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText22"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textView202"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView203"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText22"
+                android:layout_marginStart="24dp"
+                android:text="Objetivo" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText23"
+                android:layout_width="338dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/textView203"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView204"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText23"
+                android:layout_marginStart="24dp"
+                android:text="Perfil" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText24"
+                android:layout_width="338dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/textView204"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView205"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText24"
+                android:layout_marginStart="24dp"
+                android:text="Experiência" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText25"
+                android:layout_width="338dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/textView205"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView206"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText25"
+                android:layout_marginStart="24dp"
+                android:text="Formação" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText26"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textView206"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView207"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText26"
+                android:layout_marginStart="24dp"
+                android:text="Cursos" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText27"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textView207"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView208"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText27"
+                android:layout_marginStart="24dp"
+                android:text="Idiomas" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText28"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textView208"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+            <TextView
+                android:id="@+id/textView209"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText28"
+                android:layout_marginStart="24dp"
+                android:text="Dados complementares" />
+
+            <EditText
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/editText29"
+                android:layout_width="338dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/textView209"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:background="@drawable/textshape"/>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

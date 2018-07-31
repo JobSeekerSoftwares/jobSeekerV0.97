@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.app.sample.fchat.data.Tools;
 import com.app.sample.fchat.fragment.ChatsFragment;
 import com.app.sample.fchat.fragment.ChatsFragment2;
+import com.jobseeker.jobseekerusuario.OpenActivity;
 import com.jobseeker.jobseekerusuario.R;
 
 public class ChatActivity extends AppCompatActivity {
@@ -69,7 +70,7 @@ public class ChatActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_logout: {
-                Intent logoutIntent=new Intent(this,ActivitySplash.class);
+                Intent logoutIntent=new Intent(this,OpenActivity.class);
                 logoutIntent.putExtra("mode","logout");
                 startActivity(logoutIntent);
                 finish();
